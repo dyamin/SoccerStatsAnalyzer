@@ -1,5 +1,5 @@
 import config
-from CLI import SoccerAnalysisCLI
+from SoccerAnalysisCLI import SoccerAnalysisCLI
 from src.SoccerDataLoader import SoccerDataLoader
 
 

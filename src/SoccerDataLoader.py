@@ -10,7 +10,7 @@ class SoccerDataLoader:
         print("Connecting to the SQLite database...")
 
         # List of tables you're interested in
-        tables = ["Player", "Team", "Match", "League"]
+        tables = ["Player", "Team", "Match", "League", "Player_Attributes"]
 
         # Load each table into a DataFrame and store it in a dictionary
         self.data = {}
