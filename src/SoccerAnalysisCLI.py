@@ -1,6 +1,4 @@
-from src.analysis.TopPlayerScorersStrategy import TopPlayerScorersStrategy
 from src.commands.CliCommandFactory import CliCommandFactory
-from src.commands.TopPlayerScorersCommand import TopPlayerScorersCommand
 
 
 class SoccerAnalysisCLI:

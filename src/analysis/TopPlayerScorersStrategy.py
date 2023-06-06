@@ -1,8 +1,9 @@
+import xml.etree.ElementTree as ET
+from collections import defaultdict
+
 import pandas as pd
 
 from src.analysis.AnalysisStrategy import AnalysisStrategy
-import xml.etree.ElementTree as ET
-from collections import defaultdict
 
 
 class TopPlayerScorersStrategy(AnalysisStrategy):
@@ -17,9 +18,11 @@ class TopPlayerScorersStrategy(AnalysisStrategy):
         # Map player api id to player name using Player table
         players = self.data_loader.data['Player']
         # Filter the top scorers
-        filtered_players = players[players['player_api_id'].isin([player_id for player_id, goals in goals_by_player_id])]
+        filtered_players = players[
+            players['player_api_id'].isin([player_id for player_id, goals in goals_by_player_id])]
         # Create dataframe with player name and goal count
-        goals_by_player_name = {player['player_name']: goals for player_id, goals in goals_by_player_id for index, player in filtered_players.iterrows() if player['player_api_id'] == player_id}
+        goals_by_player_name = {player['player_name']: goals for player_id, goals in goals_by_player_id for
+                                index, player in filtered_players.iterrows() if player['player_api_id'] == player_id}
         sorted_players = sorted(goals_by_player_name.items(), key=lambda x: x[1], reverse=True)
         # Create dataframe with player name and goal count
         return pd.DataFrame(sorted_players, columns=['player_name', 'goals'])
@@ -45,4 +48,3 @@ class TopPlayerScorersStrategy(AnalysisStrategy):
 
         # Sort the players by goal count and return the list
         return sorted(goal_counts.items(), key=lambda x: x[1], reverse=True)
-
